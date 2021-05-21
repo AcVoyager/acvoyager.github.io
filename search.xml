@@ -2110,6 +2110,9 @@ Java中线程池的核心实现类是`ThreadPoolExecutor`，顶层接口是`Exec
         <tag>Network</tag>
         <tag>Java</tag>
         <tag>OS</tag>
+        <tag>Distributed System</tag>
+        <tag>Algorithm</tag>
+        <tag>Web</tag>
       </tags>
   </entry>
   <entry>
@@ -2322,6 +2325,129 @@ Java中线程池的核心实现类是`ThreadPoolExecutor`，顶层接口是`Exec
       </categories>
       <tags>
         <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>AI学习笔记-MDP and RL</title>
+    <url>/2021/03/14/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-MDP/</url>
+    <content><![CDATA[<p>本篇记录与MDP(Markov Decision Process)和RL(Reinforcement Learning)相关的知识。</p>
+<a id="more"></a>
+
+<h2 id="What-is-MDP"><a href="#What-is-MDP" class="headerlink" title="What is MDP?"></a>What is MDP?</h2><p><img src="0.png" alt=""></p>
+<p>Utility, Q-Value:</p>
+<p><img src="1.png" alt=""></p>
+<h2 id="RL"><a href="#RL" class="headerlink" title="RL"></a>RL</h2><h3 id="ADP-Active-Reinforcement-Learning"><a href="#ADP-Active-Reinforcement-Learning" class="headerlink" title="ADP (Active Reinforcement Learning)"></a>ADP (Active Reinforcement Learning)</h3><p><img src="2.png" alt=""></p>
+<p><img src="3.png" alt=""></p>
+<blockquote>
+<p>Q-Learning</p>
+</blockquote>
+<p><img src="4.png" alt=""></p>
+<blockquote>
+<p>Approximate Q-Learning</p>
+</blockquote>
+<p><img src="5.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>中文, English</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Interview Preparation</title>
+    <url>/2021/03/24/Spring-Interview-Preparation/</url>
+    <content><![CDATA[<p>“There is only one heroism in the world: to see the world as it is, and to love it.”</p>
+<p>Romain Rolland, Life of Michelangelo</p>
+<a id="more"></a>
+
+<h3 id="What-is-CDN"><a href="#What-is-CDN" class="headerlink" title="What is CDN?"></a>What is CDN?</h3><p>Please see the <a href="https://docs.microsoft.com/en-us/azure/cdn/cdn-overview">Microsoft official document</a>.</p>
+<blockquote>
+<p>A content delivery network (CDN) is a distributed network of servers that can efficiently deliver web content to users. CDNs’ store cached content on edge servers in point-of-presence (POP) locations that are close to end users, to minimize latency.</p>
+</blockquote>
+<h3 id="BGP"><a href="#BGP" class="headerlink" title="BGP"></a>BGP</h3><blockquote>
+<p>Azure CDN can also accelerate dynamic content, which cannot be cached, by leveraging various network optimizations using CDN POPs. For example, route optimization to bypass Border Gateway Protocol (BGP).</p>
+</blockquote>
+<p>So what is BGP? </p>
+<p>BGP is on <code>Application Layer</code>.</p>
+<blockquote>
+<p>Border Gateway Protocol (BGP) is a standardized exterior gateway protocol designed to exchange routing and reachability information among autonomous systems (AS) on the Internet.[1] BGP is classified as a path-vector routing protocol,[2] and it makes routing decisions based on paths, network policies, or rule-sets configured by a network administrator.</p>
+</blockquote>
+<p>See <a href="https://en.wikipedia.org/wiki/Border_Gateway_Protocol#:~:text=Border%20Gateway%20Protocol%20(BGP)%20is,(AS)%20on%20the%20Internet.">Border Gateway Protocol</a></p>
+<h3 id="Steps-of-Azure-CDN-Network"><a href="#Steps-of-Azure-CDN-Network" class="headerlink" title="Steps of Azure CDN Network"></a>Steps of Azure CDN Network</h3><p>The detailed steps can be found in the document. Here putting some important steps:</p>
+<ul>
+<li>It the <strong>DNS</strong> that routes the request to the best performing POP location, which is usually the POP that is geographically closest to the user.</li>
+<li>The user interacts with point-of-presence(POP), and POP interacts with origin server.</li>
+<li>Whether POP interacts with origin server depends on the time-to-live(TTL) of the requested files. The default TTL is 7 days.<ul>
+<li>My inference: When the file get updated at the origin server, the user may not be able to access the latest version if the file in the POP has not expired TTL.</li>
+</ul>
+</li>
+</ul>
+<p>Some extra knowledge may help to understand:</p>
+<ul>
+<li>HTTP/1 vs HTTP/2: <a href="https://http2.github.io/faq/#what-are-the-key-differences-to-http1x">What are the key differences to HTTP/1.x?</a><ul>
+<li>Benefits of HTTP/2: Multiplexing and concurrency, Header compression and Stream dependencies.</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h3 id="关于Java的基础问题"><a href="#关于Java的基础问题" class="headerlink" title="关于Java的基础问题"></a>关于Java的基础问题</h3><h4 id="Java成员变量，成员函数是怎么存的？"><a href="#Java成员变量，成员函数是怎么存的？" class="headerlink" title="Java成员变量，成员函数是怎么存的？"></a>Java成员变量，成员函数是怎么存的？</h4><p><a href="https://www.programcreek.com/2013/04/jvm-run-time-data-areas/">JVM Run-Time Data Areas</a></p>
+<p>Java中的对象存在堆里，所以成员变量也在堆里。成员函数被存在方法区。</p>
+<h4 id="Java和C-的区别是什么样的？"><a href="#Java和C-的区别是什么样的？" class="headerlink" title="Java和C++的区别是什么样的？"></a>Java和C++的区别是什么样的？</h4><p><a href="https://blog.nowcoder.net/n/bbe1562c1c6a480cabfaad6b6367017d?from=nowcoder_improve">Java和python的区别 Java 和C++区别</a></p>
+<p>个人认为最容易想到的点：</p>
+<ul>
+<li>Java和Python，很明显，前者静态语言，后者动态语言。Java首先被编译为字节码，然后解释运行；Python每次运行时都需要解释。</li>
+<li>Java和C++，前者编译为字节码，以.class的形式存储在disk里，需要时通过类加载在JVM上运行；后者直接编译、链接为二进制代码运行。</li>
+</ul>
+<h4 id="静态-动态语言，强弱类型"><a href="#静态-动态语言，强弱类型" class="headerlink" title="静态/动态语言，强弱类型"></a>静态/动态语言，强弱类型</h4><p>静态类型 vs 动态类型：<strong>区别在于type checking何时发生</strong></p>
+<ul>
+<li>静态类型语言：在程序运行之前，代码中的变量会被检查（编译器），错误会被查出。例如C++，Java</li>
+<li>动态类型语言：在程序运行之前是不会做检查的，而是在运行时检查。如果代码有错，会在程序运行时报错。<strong>动态语言中，变量没有类型，值有类型。</strong> 例如Python. </li>
+<li>参考：<a href="https://stackoverflow.com/a/34231409/9045814">Difference between static and dynamic programming languages</a></li>
+</ul>
+<p>强/弱类型：在学术界上没有明显区分。参考<a href="https://www.zhihu.com/question/19918532">弱类型、强类型、动态类型、静态类型语言的区别是什么？</a></p>
+<p><img src="strongweakstaticdynamic.png" alt=""></p>
+<h3 id="Java中自定义Comparator怎么用"><a href="#Java中自定义Comparator怎么用" class="headerlink" title="Java中自定义Comparator怎么用"></a>Java中自定义Comparator怎么用</h3><ol>
+<li>Define a class which implements the <code>Comparator&lt;&gt;</code> interface</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">MyObject</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(MyObject obj1, MyObject obj2)</span></span>&#123;</span><br><span class="line">    ... <span class="comment">// return an integer </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Create an <code>Comparator&lt;&gt;</code> object in <code>Collections.sort()</code></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Collections.sort(myArray, <span class="keyword">new</span> Comparator&lt;MyObject&gt;()&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(MyObject obj1, MyObject obj2)</span></span>&#123;</span><br><span class="line">    ... <span class="comment">// return an integer </span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Reference: <a href="https://stackoverflow.com/a/2784576/9045814">Sort ArrayList of custom Objects by property</a></p>
+<h3 id="Java实现交替打印"><a href="#Java实现交替打印" class="headerlink" title="Java实现交替打印"></a>Java实现交替打印</h3><p><a href="https://leetcode-cn.com/problems/print-in-order/solution/">多线程 – 1114. 交替打印</a> </p>
+<h3 id="JavaScript-promise是什么，怎么用"><a href="#JavaScript-promise是什么，怎么用" class="headerlink" title="JavaScript promise是什么，怎么用"></a>JavaScript promise是什么，怎么用</h3>]]></content>
+      <categories>
+        <category>中文, English</category>
+      </categories>
+      <tags>
+        <tag>Network</tag>
+        <tag>OS</tag>
+        <tag>Distributed System</tag>
+        <tag>Algorithm</tag>
+        <tag>Web</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leaving-on-a-jet-plane</title>
+    <url>/2021/05/20/Leaving-on-a-jet-plane/</url>
+    <content><![CDATA[<p>Cause I’m leaving on a jet plane, don’t know when I will be back again…</p>
+<a id="more"></a>
+
+<p>约两个月没写博客了。今天这篇博客，与技术无关。</p>
+<p>四月，五月，经历了痛苦和充满变数的两个月后，我终于得以毕业，处理完生活中的一切杂事并踏上归家的旅途。</p>
+<p>这两个月发生了太多，多到我已经不想去回忆，不想分配哪怕是一点点的笔墨去描述它们。</p>
+<p>生活注定充满变数，充满纷争，也充满希望。在美国的这650天里，经历了太多没有料到的事情，我感到自己从某种层面上也变成了另一个人。</p>
+<p>虽然结果还算理想，但是过程本就是意义。</p>
+<p>再见，有缘再会。</p>
+<p>05/20/2021，于西雅图Tacoma机场</p>
+]]></content>
+      <categories>
+        <category>中文, English</category>
+      </categories>
+      <tags>
+        <tag>life</tag>
       </tags>
   </entry>
 </search>
