@@ -159,7 +159,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -231,7 +231,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/28/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/12/03/2PC-3PC-and-Raft/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -244,7 +244,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/28/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">关于Java ConcurrentMap的一些心得</a>
+          <a href="/2020/12/03/2PC-3PC-and-Raft/" class="post-title-link" itemprop="url">2PC, 3PC and Raft</a>
         </h2>
 
         <div class="post-meta-container">
@@ -254,10 +254,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-11-28 10:53:14 / Modified: 17:33:32" itemprop="dateCreated datePublished" datetime="2020-11-28T10:53:14-08:00">2020-11-28</time>
+      <time title="Created: 2020-12-03 06:11:37" itemprop="dateCreated datePublished" datetime="2020-12-03T06:11:37+08:00">2020-12-03</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-01-08 04:05:53" itemprop="dateModified" datetime="2021-01-08T04:05:53+08:00">2021-01-08</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -284,8 +290,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/28/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/28/关于Java-ConcurrentMap的一些心得/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/12/03/2PC-3PC-and-Raft/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/12/03/2PC-3PC-and-Raft/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -299,10 +305,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>果然写代码永远是最后一步，把文档看好，逻辑理清楚比什么都强。</p>
+          <p>分布式数据库事务处理协议：2PC, 3PC以及raft算法的学习总结。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/28/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/#more" rel="contents">
+              <a class="btn" href="/2020/12/03/2PC-3PC-and-Raft/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -333,7 +339,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/25/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/29/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -346,7 +352,109 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/25/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">递归解决n-sum问题</a>
+          <a href="/2020/11/29/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">关于Java ConcurrentMap的一些心得</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-11-29 02:53:14 / Modified: 09:33:32" itemprop="dateCreated datePublished" datetime="2020-11-29T02:53:14+08:00">2020-11-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E6%96%87-English/" itemprop="url" rel="index"><span itemprop="name">中文, English</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/11/29/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/29/关于Java-ConcurrentMap的一些心得/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>果然写代码永远是最后一步，把文档看好，逻辑理清楚比什么都强。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/29/%E5%85%B3%E4%BA%8EJava-ConcurrentMap%E7%9A%84%E4%B8%80%E4%BA%9B%E5%BF%83%E5%BE%97/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/26/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Voyager">
+      <meta itemprop="description" content="回首向来萧瑟处，归去">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Endeavour">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/11/26/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">递归解决n-sum问题</a>
         </h2>
 
         <div class="post-meta-container">
@@ -357,14 +465,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-25 16:51:00" itemprop="dateCreated datePublished" datetime="2020-11-25T16:51:00-08:00">2020-11-25</time>
+      <time title="Created: 2020-11-26 08:51:00" itemprop="dateCreated datePublished" datetime="2020-11-26T08:51:00+08:00">2020-11-26</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-30 20:11:16" itemprop="dateModified" datetime="2020-11-30T20:11:16-08:00">2020-11-30</time>
+        <time title="Modified: 2020-12-01 12:11:16" itemprop="dateModified" datetime="2020-12-01T12:11:16+08:00">2020-12-01</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -392,8 +500,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/25/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/25/递归解决n-sum问题/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/26/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/26/递归解决n-sum问题/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -410,7 +518,7 @@
           <p>总感觉递归比起循环，有点不讲wood的感觉（</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/25/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/#more" rel="contents">
+              <a class="btn" href="/2020/11/26/%E9%80%92%E5%BD%92%E8%A7%A3%E5%86%B3n-sum%E9%97%AE%E9%A2%98/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -466,7 +574,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2020-11-25 00:09:26 / Modified: 00:36:45" itemprop="dateCreated datePublished" datetime="2020-11-25T00:09:26-08:00">2020-11-25</time>
+      <time title="Created: 2020-11-25 16:09:26 / Modified: 16:36:45" itemprop="dateCreated datePublished" datetime="2020-11-25T16:09:26+08:00">2020-11-25</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -544,7 +652,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/18/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/19/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -557,7 +665,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/18/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/" class="post-title-link" itemprop="url">关于Git的一些review</a>
+          <a href="/2020/11/19/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/" class="post-title-link" itemprop="url">关于Git的一些review</a>
         </h2>
 
         <div class="post-meta-container">
@@ -567,16 +675,10 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2020-11-18 22:56:20" itemprop="dateCreated datePublished" datetime="2020-11-18T22:56:20-08:00">2020-11-18</time>
+      <time title="Created: 2020-11-19 14:56:20 / Modified: 17:08:09" itemprop="dateCreated datePublished" datetime="2020-11-19T14:56:20+08:00">2020-11-19</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-19 01:08:09" itemprop="dateModified" datetime="2020-11-19T01:08:09-08:00">2020-11-19</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -603,8 +705,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/18/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/18/关于Git的一些review/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/19/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/19/关于Git的一些review/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -621,7 +723,7 @@
           <p>最近由于一些group work导致对git的使用量激增。在使用中，也重新对之前半懂不懂的一些概念进行了复习。<br>本文便记载一些复习的内容。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/18/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/#more" rel="contents">
+              <a class="btn" href="/2020/11/19/%E5%85%B3%E4%BA%8EGit%E7%9A%84%E4%B8%80%E4%BA%9Breview/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -652,7 +754,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -665,7 +767,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/" class="post-title-link" itemprop="url">AWS学习笔记-Well-Architected Framework</a>
+          <a href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/" class="post-title-link" itemprop="url">AWS学习笔记-Well-Architected Framework</a>
         </h2>
 
         <div class="post-meta-container">
@@ -676,14 +778,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-16 22:02:45" itemprop="dateCreated datePublished" datetime="2020-11-16T22:02:45-08:00">2020-11-16</time>
+      <time title="Created: 2020-11-17 14:02:45" itemprop="dateCreated datePublished" datetime="2020-11-17T14:02:45+08:00">2020-11-17</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-23 15:34:03" itemprop="dateModified" datetime="2020-11-23T15:34:03-08:00">2020-11-23</time>
+        <time title="Modified: 2020-11-24 07:34:03" itemprop="dateModified" datetime="2020-11-24T07:34:03+08:00">2020-11-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -711,8 +813,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/16/AWS学习笔记-Well-Architected-Framework/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/17/AWS学习笔记-Well-Architected-Framework/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -729,7 +831,7 @@
           Here's something encrypted, password is required to continue reading.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/#more" rel="contents">
+              <a class="btn" href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Well-Architected-Framework/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -760,7 +862,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -773,7 +875,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/" class="post-title-link" itemprop="url">AWS学习笔记-Design Web Scale Media</a>
+          <a href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/" class="post-title-link" itemprop="url">AWS学习笔记-Design Web Scale Media</a>
         </h2>
 
         <div class="post-meta-container">
@@ -784,14 +886,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-16 17:56:41" itemprop="dateCreated datePublished" datetime="2020-11-16T17:56:41-08:00">2020-11-16</time>
+      <time title="Created: 2020-11-17 09:56:41" itemprop="dateCreated datePublished" datetime="2020-11-17T09:56:41+08:00">2020-11-17</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-23 15:32:43" itemprop="dateModified" datetime="2020-11-23T15:32:43-08:00">2020-11-23</time>
+        <time title="Modified: 2020-11-24 07:32:43" itemprop="dateModified" datetime="2020-11-24T07:32:43+08:00">2020-11-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -819,8 +921,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/16/AWS学习笔记-Design-Web-Scale-Media/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/17/AWS学习笔记-Design-Web-Scale-Media/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -837,7 +939,7 @@
           Here's something encrypted, password is required to continue reading.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/16/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/#more" rel="contents">
+              <a class="btn" href="/2020/11/17/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Design-Web-Scale-Media/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -868,7 +970,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -881,7 +983,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/" class="post-title-link" itemprop="url">AWS学习笔记-Decoupling</a>
+          <a href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/" class="post-title-link" itemprop="url">AWS学习笔记-Decoupling</a>
         </h2>
 
         <div class="post-meta-container">
@@ -892,14 +994,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-11 20:59:20" itemprop="dateCreated datePublished" datetime="2020-11-11T20:59:20-08:00">2020-11-11</time>
+      <time title="Created: 2020-11-12 12:59:20" itemprop="dateCreated datePublished" datetime="2020-11-12T12:59:20+08:00">2020-11-12</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-23 15:33:46" itemprop="dateModified" datetime="2020-11-23T15:33:46-08:00">2020-11-23</time>
+        <time title="Modified: 2020-11-24 07:33:46" itemprop="dateModified" datetime="2020-11-24T07:33:46+08:00">2020-11-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -927,8 +1029,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/11/AWS学习笔记-Decoupling/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/12/AWS学习笔记-Decoupling/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -945,7 +1047,7 @@
           Here's something encrypted, password is required to continue reading.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/#more" rel="contents">
+              <a class="btn" href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -976,7 +1078,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -989,7 +1091,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/" class="post-title-link" itemprop="url">AWS学习笔记-Automating</a>
+          <a href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/" class="post-title-link" itemprop="url">AWS学习笔记-Automating</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1000,14 +1102,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-11 18:28:28" itemprop="dateCreated datePublished" datetime="2020-11-11T18:28:28-08:00">2020-11-11</time>
+      <time title="Created: 2020-11-12 10:28:28" itemprop="dateCreated datePublished" datetime="2020-11-12T10:28:28+08:00">2020-11-12</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-23 15:33:40" itemprop="dateModified" datetime="2020-11-23T15:33:40-08:00">2020-11-23</time>
+        <time title="Modified: 2020-11-24 07:33:40" itemprop="dateModified" datetime="2020-11-24T07:33:40+08:00">2020-11-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1035,8 +1137,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/11/AWS学习笔记-Automating/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/12/AWS学习笔记-Automating/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1053,7 +1155,7 @@
           Here's something encrypted, password is required to continue reading.
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/11/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/#more" rel="contents">
+              <a class="btn" href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1084,7 +1186,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/03/Learning-Roadmap/">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/04/Learning-Roadmap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1097,7 +1199,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/03/Learning-Roadmap/" class="post-title-link" itemprop="url">Learning Roadmap</a>
+          <a href="/2020/11/04/Learning-Roadmap/" class="post-title-link" itemprop="url">Learning Roadmap</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1108,14 +1210,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2020-11-03 16:54:43" itemprop="dateCreated datePublished" datetime="2020-11-03T16:54:43-08:00">2020-11-03</time>
+      <time title="Created: 2020-11-04 08:54:43" itemprop="dateCreated datePublished" datetime="2020-11-04T08:54:43+08:00">2020-11-04</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2020-11-05 16:29:10" itemprop="dateModified" datetime="2020-11-05T16:29:10-08:00">2020-11-05</time>
+        <time title="Modified: 2020-11-06 08:29:10" itemprop="dateModified" datetime="2020-11-06T08:29:10+08:00">2020-11-06</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1143,8 +1245,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2020/11/03/Learning-Roadmap/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/03/Learning-Roadmap/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/11/04/Learning-Roadmap/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/04/Learning-Roadmap/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1161,115 +1263,7 @@
           <h1 id="Backend-Development"><a href="#Backend-Development" class="headerlink" title="Backend Development"></a>Backend Development</h1>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/11/03/Learning-Roadmap/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/02/Interview-Preparation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Voyager">
-      <meta itemprop="description" content="回首向来萧瑟处，归去">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="The Endeavour">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/11/02/Interview-Preparation/" class="post-title-link" itemprop="url">Interview Preparation</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-11-02 00:21:21" itemprop="dateCreated datePublished" datetime="2020-11-02T00:21:21-08:00">2020-11-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2021-03-24 15:04:37" itemprop="dateModified" datetime="2021-03-24T15:04:37-07:00">2021-03-24</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%AD%E6%96%87-English/" itemprop="url" rel="index"><span itemprop="name">中文, English</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="Views">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">Views: </span>
-      <span class="firestore-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2020/11/02/Interview-Preparation/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/02/Interview-Preparation/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文为个人复习面试的一些资料。内容大多来源于网络。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/02/Interview-Preparation/#more" rel="contents">
+              <a class="btn" href="/2020/11/04/Learning-Roadmap/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

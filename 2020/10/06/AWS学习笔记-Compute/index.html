@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;acvoyager.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="欢迎来到我的AWS学习笔记系列。 本文着重记述关于AWS云计算服务的知识点。如若转载，请先与作者联系。 本文图片来自于网络 AWS Compute">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS学习笔记: Compute">
+<meta property="og:url" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/index.html">
+<meta property="og:site_name" content="The Endeavour">
+<meta property="og:description" content="欢迎来到我的AWS学习笔记系列。 本文着重记述关于AWS云计算服务的知识点。如若转载，请先与作者联系。 本文图片来自于网络 AWS Compute">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/categorizing_compute_service.png">
+<meta property="og:image" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/container_vs_vm.png">
+<meta property="og:image" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/lambda.png">
+<meta property="og:image" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/beanstalk.jpg">
+<meta property="article:published_time" content="2020-10-06T00:45:11.000Z">
+<meta property="article:modified_time" content="2020-10-27T00:44:58.698Z">
+<meta property="article:author" content="Voyager">
+<meta property="article:tag" content="AWS">
+<meta property="article:tag" content="Network">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/categorizing_compute_service.png">
+
+
+<link rel="canonical" href="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;acvoyager.github.io&#x2F;2020&#x2F;10&#x2F;06&#x2F;AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute&#x2F;&quot;,&quot;path&quot;:&quot;2020&#x2F;10&#x2F;06&#x2F;AWS学习笔记-Compute&#x2F;&quot;,&quot;title&quot;:&quot;AWS学习笔记: Compute&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>AWS学习笔记: Compute | The Endeavour</title><script src="/js/config.js"></script>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168368135-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{&quot;tracking_id&quot;:&quot;UA-168368135-1&quot;,&quot;only_pageview&quot;:false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">The Endeavour</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AWS-Compute"><span class="nav-number">1.</span> <span class="nav-text">AWS Compute</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-EC2"><span class="nav-number">1.2.</span> <span class="nav-text">Amazon EC2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-EC2-Cost-Optimization"><span class="nav-number">1.3.</span> <span class="nav-text">Amazon EC2 Cost Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-Services"><span class="nav-number">1.4.</span> <span class="nav-text">Container Services</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-AWS-Lambda"><span class="nav-number">1.5.</span> <span class="nav-text">Introduction to AWS Lambda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-AWS-Elastic-Beanstalk"><span class="nav-number">1.6.</span> <span class="nav-text">Introduction to AWS Elastic Beanstalk</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Voyager</p>
+  <div class="site-description" itemprop="description">回首向来萧瑟处，归去</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AcVoyager" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AcVoyager" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xcvoyager01@gmail.com" title="E-Mail → mailto:xcvoyager01@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://acvoyager.github.io/portfolio5610/" title="https:&#x2F;&#x2F;acvoyager.github.io&#x2F;portfolio5610&#x2F;">My Portfolio</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Voyager">
+      <meta itemprop="description" content="回首向来萧瑟处，归去">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Endeavour">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS学习笔记: Compute
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-10-06 08:45:11" itemprop="dateCreated datePublished" datetime="2020-10-06T08:45:11+08:00">2020-10-06</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-10-27 08:44:58" itemprop="dateModified" datetime="2020-10-27T08:44:58+08:00">2020-10-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E6%96%87-English/" itemprop="url" rel="index"><span itemprop="name">中文, English</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/06/AWS学习笔记-Compute/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>欢迎来到我的AWS学习笔记系列。</p>
+<p>本文着重记述关于AWS云计算服务的知识点。如若转载，请先与作者联系。</p>
+<p><em>本文图片来自于网络</em></p>
+<h1 id="AWS-Compute"><a href="#AWS-Compute" class="headerlink" title="AWS Compute"></a>AWS Compute</h1><a id="more"></a>
+
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><img src="categorizing_compute_service.png" alt=""></p>
+<h2 id="Amazon-EC2"><a href="#Amazon-EC2" class="headerlink" title="Amazon EC2"></a>Amazon EC2</h2><p>Amazon Elastic Compute Cloud (Amazon EC2)</p>
+<ul>
+<li>Features:<ul>
+<li>Provides <strong>virtual machines</strong>—referred to as EC2 instances—in the cloud.</li>
+<li>Gives you <strong>full control</strong> over the guest operating system (Windows or Linux) on each instance.</li>
+<li>You can launch instances of any size into an Availability Zone anywhere in the world.<ul>
+<li>From <strong>Amazon Machine Images</strong> (AMIs)</li>
+<li>Control traffic to and from instances</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Launch steps:<ul>
+<li>1.Select an AMI<ul>
+<li>A template used to create an EC2 instance</li>
+<li>Win or Linux, also some pre-installed software</li>
+</ul>
+</li>
+<li>2.Instance type<ul>
+<li>Your choice of instance type determines RAM, CPU, Storage and Network performance.</li>
+<li>Types: general, computing, memory, storage, accelerated optimized</li>
+<li>Naming:<ul>
+<li>Example: t3.large</li>
+<li>T is the family name</li>
+<li>3 is the generation number</li>
+<li>Large is the size</li>
+</ul>
+</li>
+<li>Networking features:<ul>
+<li>Gbps varies by instance type</li>
+<li>To maximize networking and bandwidth, use <strong>cluster placement group</strong> or <strong>enable enhanced networking</strong>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3.Network settings<ul>
+<li>Identify the VPC and optionally the subnet.</li>
+</ul>
+</li>
+<li>4.IAM role(Optional)<ul>
+<li>See more about IAM</li>
+</ul>
+</li>
+<li>5.User data(Optional)<ul>
+<li>Optionally specify a user data script at instance launch </li>
+</ul>
+</li>
+<li>6.Storage option<ul>
+<li>Root volume: Where the guest operating system is installed</li>
+<li>(Optional) add additional volumes</li>
+<li>Volume<ul>
+<li>Size in GB</li>
+<li>SSDs/HDDs</li>
+<li>if get deleted when the instances is terminated</li>
+<li>if use encryption</li>
+</ul>
+</li>
+<li>Storage options:<ul>
+<li>Amazon EBS -&gt; durable, won’t be deleted when termination</li>
+<li>Amazon EC2 Instance Store: Ephemeral, get deleted when stopping.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>7.tags<ul>
+<li>Tagging is how you can attach metadata to an EC2 instance</li>
+</ul>
+</li>
+<li>8.Security group<ul>
+<li>A set of firewall rules that control traffic to the instance.</li>
+<li>Specify the port number, the protocol, the source</li>
+</ul>
+</li>
+<li>9.Key pair<ul>
+<li>consists of a public key and private key</li>
+<li>For windows AMIs: Use the private key to obtain the administrator password that you need to log in to your instance</li>
+<li>For Linux AMIs: Use the private key to use SSH to securely connect to your instance.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Another option: Launch an EC2 instance with the AWS Command Line Interface</li>
+<li>Instance lifecycle</li>
+<li>Instance hibernation option<ul>
+<li>Benefits: Save and reload content in the RAM</li>
+<li>Prerequisites: <ul>
+<li>Certain Linux AMIS</li>
+<li>Must have encrypted Amazon EBS root volume</li>
+<li>Enable Hibernation at instance launch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Using elastic address:<ul>
+<li>Before using:<ul>
+<li>Rebooting will not change ip address</li>
+<li>If stop and then start, the external IPv4 addr and DNS hostname will change; the internal ones won’t.</li>
+</ul>
+</li>
+<li>After:<ul>
+<li>Remains allocated until get released.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>EC2 instance metadata<ul>
+<li>While you are connected to the instance, you can view it – <ul>
+<li>In a browser: <a target="_blank" rel="noopener" href="http://169.254.169.254/latest/meta-data/">http://169.254.169.254/latest/meta-data/</a></li>
+<li>In a terminal window: curl <a target="_blank" rel="noopener" href="http://169.254.169.254/latest/meta-data/">http://169.254.169.254/latest/meta-data/</a></li>
+</ul>
+</li>
+<li>be used to configure or manage a running instance</li>
+</ul>
+</li>
+<li>Amazon CloudWatch for monitoring</li>
+</ul>
+<h2 id="Amazon-EC2-Cost-Optimization"><a href="#Amazon-EC2-Cost-Optimization" class="headerlink" title="Amazon EC2 Cost Optimization"></a>Amazon EC2 Cost Optimization</h2><table>
+<thead>
+<tr>
+<th>Pricing models</th>
+<th>On-Demand Instances</th>
+<th>Spot Instances</th>
+<th>Reserved Instances</th>
+<th>Dedicated Hosts</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Benefits</td>
+<td>Low cost and flexibility</td>
+<td>Large scale, dynamic workload</td>
+<td>Predictability ensures compute capacity is available when needed</td>
+<td>Save money on licensing costs <br> Help meet compliance and regulatory requirements</td>
+</tr>
+<tr>
+<td>Use cases</td>
+<td>Short-term, spiky, or unpredictable workloads <br> Application development or testing</td>
+<td>Applications with flexible start and end times <br> Applications only feasible at very low compute prices <br> Users with urgent computing needs for large amounts of additional capacity</td>
+<td>Steady state or predictable usage workloads <br> Applications that require reserved capacity, including disaster recovery <br> Users able to make upfront payments to reduce total computing costs even further</td>
+<td>Bring your own license (BYOL) <br> Compliance and regulatory restrictions <br> Usage and licensing tracking <br> Control instance placement</td>
+</tr>
+<tr>
+<td>Use cases example</td>
+<td>Spiky Workloads</td>
+<td>Time-Insensitive Workloads</td>
+<td>Steady-State Workloads</td>
+<td>Highly Sensitive Workloads</td>
+</tr>
+</tbody></table>
+<p>Four pillars of cost optimization:</p>
+<ul>
+<li>1.Right size<ul>
+<li>Provision instances to match the need </li>
+<li>Use CloudWatch</li>
+<li>Best practice: Right size, then reserve</li>
+</ul>
+</li>
+<li>2.Increase elasticity<ul>
+<li>Stop or hibernate Amazon EBS-backed instances that are not actively in use</li>
+<li>Use automatic scaling to match needs based on usage </li>
+</ul>
+</li>
+<li>3.Optimal pricing model<ul>
+<li>Leverage the right pricing model for your use case</li>
+<li>Consider serverless solutions (AWS Lambda)</li>
+</ul>
+</li>
+<li>4.Optimize storage choices<ul>
+<li>Mainly focus on EBS</li>
+</ul>
+</li>
+</ul>
+<h2 id="Container-Services"><a href="#Container-Services" class="headerlink" title="Container Services"></a>Container Services</h2><p>Container basics</p>
+<ul>
+<li>Containers are a method of operating system virtualization</li>
+<li>Benefits:<ul>
+<li>Repeatable</li>
+<li>Self-contained execution environments</li>
+<li>Software runs the same in different environments</li>
+<li>Faster to launch and stop or terminate than virtual machines</li>
+</ul>
+</li>
+</ul>
+<p>Docker</p>
+<ul>
+<li>Docker is a software platform that enables you to build, test, and deploy applications quickly.</li>
+<li>Run containers on Docker. Containers are created from a template called an image.</li>
+<li>A container has everything a software application needs to run,<ul>
+<li>which are l<strong>ibraries, system tools, code, runtime</strong></li>
+</ul>
+</li>
+</ul>
+<p>Container v.s. Virtual Machines<br><img src="container_vs_vm.png" alt=""></p>
+<p>Amazon Elastic Container Service (Amazon ECS)</p>
+<ul>
+<li>A highly scalable, fast, container management service </li>
+<li>Benefits:<ul>
+<li>Orchestrates the execution of Docker containers</li>
+<li>Maintains and scales the fleet of nodes that run your containers</li>
+<li>Removes the complexity of standing up the infrastructure </li>
+</ul>
+</li>
+<li>Amazon ECS cluster options<ul>
+<li>Do you want to manage Amazon ECS cluster?</li>
+<li>Yes:<ul>
+<li>create an Amazon ECS cluster <strong>backed by Amazon EC2</strong> </li>
+</ul>
+</li>
+<li>No:<ul>
+<li>create an Amazon ECS cluster <strong>backed by AWS Fargate</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Kubernetes</p>
+<ul>
+<li>An open source software for container orchestration</li>
+<li>Deploy and <strong>manage containerized applications</strong> at scale</li>
+<li><strong>Complements Docker</strong><ul>
+<li>Docker enables you to <strong>run multiple containers</strong> on a single OS host. </li>
+<li>Kubernetes <strong>orchestrates multiple Docker</strong> hosts (nodes).</li>
+</ul>
+</li>
+</ul>
+<p>Amazon Elastic Kubernetes Service(Amazon EKS)</p>
+<ul>
+<li>Enables you to run Kubernetes on AWS</li>
+<li>Manage clusters of Amazon EC2 compute instances</li>
+</ul>
+<p>Amazon Elastic Container Registry (Amazon ECR) </p>
+<ul>
+<li>Enables you to store, manage, and deploy your Docker containers</li>
+</ul>
+<h2 id="Introduction-to-AWS-Lambda"><a href="#Introduction-to-AWS-Lambda" class="headerlink" title="Introduction to AWS Lambda"></a>Introduction to AWS Lambda</h2><p><img src="lambda.png" alt=""></p>
+<p>AWS Lambda:</p>
+<ul>
+<li>Features<ul>
+<li>It supports multiple programming languages.</li>
+<li>Completely automated administration</li>
+<li>Built-in fault tolerance</li>
+<li>It supports the orchestration of multiple functions</li>
+<li>Pay-per-use pricing</li>
+</ul>
+</li>
+<li>Event sources<ul>
+<li>Configure other AWS services as event sources to invoke your function as shown here.</li>
+<li>Alternatively, invoke a Lambda function from the Lambda console, AWS SDK, or AWS CLI.</li>
+<li>Only execute when being triggered</li>
+</ul>
+</li>
+<li>Limits<ul>
+<li>The maximum memory allocation for a single Lambda function is 3,008 MB.</li>
+<li>The maximum execution time for a Lambda function is 15 minutes.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Introduction-to-AWS-Elastic-Beanstalk"><a href="#Introduction-to-AWS-Elastic-Beanstalk" class="headerlink" title="Introduction to AWS Elastic Beanstalk"></a>Introduction to AWS Elastic Beanstalk</h2><p>AWS Elastic Beanstalk</p>
+<ul>
+<li>An easy way to get web applications up and running</li>
+<li>A managed service that automatically handles – <ul>
+<li>Infrastructure provisioning and configuration</li>
+<li>Deployment</li>
+<li>Load balancing</li>
+<li>Automatic scaling</li>
+<li>Health monitoring</li>
+<li>Analysis and debugging</li>
+<li>Logging</li>
+</ul>
+</li>
+<li>No additional charge for Elastic Beanstalk<ul>
+<li>Pay only for the underlying resources that are used</li>
+</ul>
+</li>
+<li>It supports web applications written for common platforms <ul>
+<li>Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker</li>
+</ul>
+</li>
+<li>You upload your code and Elastic Beanstalk automatically handles the deployment</li>
+<li><img src="beanstalk.jpg" alt=""></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Voyager
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://acvoyager.github.io/2020/10/06/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Compute/" title="AWS学习笔记: Compute">https://acvoyager.github.io/2020/10/06/AWS学习笔记-Compute/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/AWS/" rel="tag"># AWS</a>
+              <a href="/tags/Network/" rel="tag"># Network</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/05/hexo-asset%E8%AE%BE%E7%BD%AE-hexo-rendered-marked/" rel="prev" title="hexo asset设置: hexo-rendered-marked">
+                  <i class="fa fa-chevron-left"></i> hexo asset设置: hexo-rendered-marked
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/07/IntelliJ-%E8%BF%9B%E8%A1%8CJava%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%97%B6%E5%87%BA%E9%94%99-IntelliJ-test-events-were-not-received%E5%8E%9F%E5%9B%A0%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" rel="next" title="IntelliJ 进行Java单元测试时出错: IntelliJ test events were not received原因及解决办法">
+                  IntelliJ 进行Java单元测试时出错: IntelliJ test events were not received原因及解决办法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  <script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Voyager</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/firebase@8.4.2/firebase-app.js" integrity="sha256-aS+rZ1asHNtiV5W1+xXQ5lgWF8vMvIqUGYkHJetOD9A=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/firebase@8.4.2/firebase-firestore.js" integrity="sha256-hCnXfO8mXFtVSaEv9mZUk6Dw2xIcWZj+ABYvThpJCJg=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{&quot;enable&quot;:true,&quot;collection&quot;:&quot;articles&quot;,&quot;apiKey&quot;:&quot;AIzaSyDY9_gdwlZQh3pD0aOUUt4qoOuS_Cnn7L8&quot;,&quot;projectId&quot;:&quot;my-blog-9d335&quot;}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;mhchem&quot;:false,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{&quot;enable&quot;:true,&quot;shortname&quot;:&quot;voyager&quot;,&quot;count&quot;:true,&quot;i18n&quot;:{&quot;disqus&quot;:&quot;disqus&quot;}}</script>
+<script src="/js/third-party/comments/disqus.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

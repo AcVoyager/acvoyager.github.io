@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;acvoyager.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:true,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AWS学习笔记-Automating">
+<meta property="og:url" content="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/index.html">
+<meta property="og:site_name" content="The Endeavour">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-12T02:28:28.000Z">
+<meta property="article:modified_time" content="2020-11-23T23:33:40.540Z">
+<meta property="article:author" content="Voyager">
+<meta property="article:tag" content="AWS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;acvoyager.github.io&#x2F;2020&#x2F;11&#x2F;12&#x2F;AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating&#x2F;&quot;,&quot;path&quot;:&quot;2020&#x2F;11&#x2F;12&#x2F;AWS学习笔记-Automating&#x2F;&quot;,&quot;title&quot;:&quot;AWS学习笔记-Automating&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>AWS学习笔记-Automating | The Endeavour</title><script src="/js/config.js"></script>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168368135-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{&quot;tracking_id&quot;:&quot;UA-168368135-1&quot;,&quot;only_pageview&quot;:false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">The Endeavour</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Voyager</p>
+  <div class="site-description" itemprop="description">回首向来萧瑟处，归去</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AcVoyager" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AcVoyager" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xcvoyager01@gmail.com" title="E-Mail → mailto:xcvoyager01@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://acvoyager.github.io/portfolio5610/" title="https:&#x2F;&#x2F;acvoyager.github.io&#x2F;portfolio5610&#x2F;">My Portfolio</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Voyager">
+      <meta itemprop="description" content="回首向来萧瑟处，归去">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="The Endeavour">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AWS学习笔记-Automating
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-11-12 10:28:28" itemprop="dateCreated datePublished" datetime="2020-11-12T10:28:28+08:00">2020-11-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-11-24 07:33:40" itemprop="dateModified" datetime="2020-11-24T07:33:40+08:00">2020-11-24</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%B8%AD%E6%96%87-English/" itemprop="url" rel="index"><span itemprop="name">中文, English</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span class="firestore-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/11/12/AWS学习笔记-Automating/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="fb1115e16e8c260d2643b68e08d96ecc0d24b56a68cb5dd42fb2d13f54eb381a">5ddec13a7fb8eee6eb949c34c79c3c878a6762f8544c7a6a163012389626a5e239b45fd6f8a15116c022d90d65a6f998eea6e72d68d384998a869db7103a32459618627e9d61a8da8f3f35fcff170be4eaf62d12af232bd5ccb72f7fd7d20cb2e4237163ca82d6fb2c48843b98de78f738caf3c89df8e02cd90f083dceb78f593ba51a94ff1d34c948d37b984af200a8eea9200b111b1d58e72b0bae2f0670e0a0416d679b397cd6bcbd935e0b7d9b4298724e0ebb16f4126fa53ee12767f2b35bb251c058ab6e87afe8a3693837944ac4f4d2765c8752c3948d92917572c39d5ffa0c9a459dcc24c1fa077f07a4919e67e8ba9493840c0fef26f9097e2da17b054f532879c7e4598cba11d23b780bff3cd61fad315e9a5eb42b065f4eff5b9c6239622b6d039a15d2a6e2eb0d48ccf4b0a63560fbada25b177e22771dcde39288d6e310ddf45dabfffaa65d815e9b414ce1e6afc60cd930a0f87df92c1e3ae97eb704a5fcaa5479189888d77ecd4facdcd24fbad330240bfbf62858cc69866c54443d30c068c4afe5b2d8f45dbd091b069ac94a15d2f9f43a97e1e2e6232ee01d952bd5f9a0f7c6c398ce0b77db8572fde62a19c83f152ffe4912d29e5bf83aed6a4d8eba77d4ba28bb562e0f33cf0c488b6409150e780e96d2ffa429e2c1c0e0cf76899816dcdff1be4234a3c1cdd5d3fc0a36d1206ecfd21a53bd7b0015f31d1068d0e617d2d4a79e1f06b705ae479c2f34c11f4c7ec4dcfcf153902879f893b665389ee4ca1d1877d9d1c535f3c9fbb69bb86fcd96f5a154797c7e3a3e72d3aac6120ad2ac88e6695984ea0774e78d51d36f806594526598f2187d6fc027bf0508667c4424a32c148bba5fdea36abc9f9a417450462fd41222ff2656c1e0ffe93cacb70eb6c8c1a6aea348aa7d6d67f8bcb3112c96ade9629c646e52d48838bb7d755c53d1fbe8fa25def86e67cf63ad9ec00040b74497129c9113ef8be929e6ff7cd469c792ca44586fd0d76264d979f10be0525de32fd428f574bf93a2058ba8e25a7d3377243b8710ed3fbca998f8b79999541b20ad1879ce7d17724aadacab73e466a293839a5386f3c2f1dd4bb5bc16beab9e55a76d8c33d7f8a8c772173e669ba157504c1c688066f9f055a5d26e3aad8c64542d8129c32e8a6ce1c325e135c43a80ace4f638295ae8e63d9d463717b88dd31e9ce8576e713dddcdaec5fcac6bd638337038e307473bf8d2c36cabe67096494a66b6535cf746b32b484afcf0d4986e9a016775ca33a2151fc201f36124cabc77916d65440e224e7b59c2fb3c45d6d5c8cb81d5cffadca6a9061e0e5341896b7204c3baf5a4dad585149cac1a154b16fdad6d278117dff293806050f504cde38579c9a28119ca3a5b47d1d7537e5e133cf9982e8af8665de8cd64b9aa5d5e2e01d7b8abf7c48a555cb7483d7bea92bfeae1acc15142a45766ebe2d0c4943aea903cc5bd5179812b676370e6787e3e06f98488c1d5325ee610c982f358048be17281655188271620fcf7d82bc67c44851dd0dc821be358ef5325107f14e9c9a7641cfeaa1187008a8703a034fcafa84fdc8ded2b7c312ef17a39dd59a8f1f1f7f2cb1c1225169705cf7744352aedaa9c0f572d0bbcb939d11ba90324329e1ad0679988f94210e42a14c13700e07effbe475aba3e11f0c89615d8c9b62daecc16b5cfbc142c92d8ab1ac7b1bbf9573ed32a353d8223e9f71021eebb9a9d9d90be8ba66507ff0bfc545c87687eb7648e0429e762a6720a25679e4aa5c9bb826d3d7dd2eb0b523a98414efe028b98adc9dbb4e3614069ba58dc1330a6990b1b8dad73218839c2f9b695a80f03849166797406696782698910f011a2e2dafe6dd47d5a104d56ce1891140a1cf65fef83dc5bdaaae9e2af4133ca263a3a33d1ca8bcd878133fe06b5090714a7afe50a3bab6c6877731a7bfdef9715c96a7b68d5e0e48951b52d33aecf9d346f61913a4395f1c5a8355adb9ffa4fbe2ebb6ecf0f3c0c3121921bddd4badb2ad362d9968541a23a9065b912b68d3331f505e5b1a552835b200950c33e69e86d6b7bcf1b4b0312e06641a515bf8c02280abe654084285f7f38e9b22ea823e03668b30bb290c29333e850bfac654ed4da8f8a9567a89485e796b15aca39a7faec4e5d6a0108d57e450dc5d01e1e363fedf2504fb8a6d0dcac76aca17fa1dfed2baea718b05477061a99211d5dcfe67377ba472d3d1af3405d4e6a7932de74c2687e0a0f26d4458d50d0347ffc3ae7e927f4da6cb1e46196181bd3fbdde68e0086beb46ab4ce05a76d33a0c7d12ac07a46e24983de42eb29b3941da79a26e6661dd8843f270650b277b43253a67b0259d7cafc5e795103bc1f9b09db90320b5549d1d4cf806e99eeba12f14e7016a49af9743f4f6bda6215e9b44a9567fb6acafbfd769aa9a2d4cc018a08241ec1eb1c5137873eea226be62953ba9fe92f24ec810b6d09a3bfd6168b1af3bfebbfcf941edfd4838a88cd0795a87ca91705b07bd96d673deb421e653aae4cf417f6c030767a408b5e6820c729c70275cfd4928802d5e3b1d42a1ebdbed2f779242cb5b4b020aaf2b3412f7df7815a88e63d2ee048444b4aead358678855c52ee647ebfdcb45e2c69d37cb16d7695c37c57078eb0ffab4b1babe62d5f0cd087bf70fe66891a187c3f88ff9cbc5ef0a0638ac925cd1c91ff9c109c3fcef7807c5e4bd27ba5ec914e88b849833ec76305637d6ef2d4e2f80976455930b1e11eb49c769ac9e2047dbeb216fb643036afab3ef5e8d7adf1018be0e4e2aff04176c236525a90a7fe6859ca5361d85e9c0c30cb3e10e3d54917172ae484c732ce671fd17c5a18646626ea249be49e650434979d89ac03955e322866cfbb61a25a3203790db9ef3518734083b9907b3e7d6fe4baf8fb80eb17e76b8bbe5803e218d00cf071c4efcdb8b6d70671e42279ee70500883fb7e1d36c3460cc4a2fc244daf99c5750bb587358792a8834a557fbdf60cb80e9effeb96a1291aa7c05f41593b2d80f2f4159ad1fccc3213efe23315bfe26a0be87387624738a623f87d75c2422fbaf1c741ed759bde94eae24051af2b675438b1af651990b353ede83a4c8e50d940a12042bfc1af4edc450554c9871bb11c21b2c49378c0fca900caf31e90a668fa9836ed60d0175fc049231dd2f9250cb85d8cfbdbb39b3c7211467262154e5ad73660b51e06203c5ff3575b1438b98f6efb7c45653472a9ade72e510ba788f563186bccc8699c7aebf6e45a74dda636bffee78453784fada896ae97a3d12160e24c430a0d53d64059a1c6d5e91d52450aca59309c1bbe8826ecfe37e66e2e35f078ad9629574aa1b5845aaad5d8ebc71184f3e9b3466fd62b3c8fda473be782d1c8b2ada753b4e4307e18ace3c0cc90a1810089a6bdf76c6271d3741af29652f1100fe6cc99647bfa683856efd0e8577e2cacfbc10c175162804bf8860756e898fb1c79d7d9fbd66f79db126a459fc1d9df3241a8d41b6384665cdfa708a575832b08ae5afe59ec90a4ac32cb3416b385f120173958592072d1a51c9027bd9407f2c2359a013cc1792cda830834a44e2d24aa5b98f4525ecfdd20825924f1c372743dddbe82a33a926d30e9b584e1fe4596f22e1afd07d06e7a17f57afaccdb8a12a491779af08c386a585b316669fec036d0a8aef9ccdb0b9c1663ad7a5a0d93b37b3ea2bc5d060e352dc895cad5cd92768a80e5a1a1d10662b2f02036d67827956c921a03a5098838aa771a24e20749cd8e9e44f3542f2d0b694c4a515d6b6814f3a64d48368932f5977fc1fa9931de43bdd3181c6e2cc5fa4c222a755ba472ef8ed3e39383aca91c4dc9fcb759ea18dce02d4ec8e915597e42d764d400959cea6e1730e613fa7f5363ef8407e785a67865af3b81f252645e899c9762874daa7166386ed1ad36832e79bf8cb405df215880d9aa86c2a5fbb8e3e3a9b7a8b59d83b18f90e86353daafe2befd326ecbda643ce4dd3a636b327f3422ceac91e168278d1673aeead528b882731b7906b27240ab0055e372a383f8998efd6298042dcdb5dcf518a8546aa4b9547a8cf8c213140c2005350873f6590f780ab6898f7a17977ba4ed7c290404ee53308bce05b4cff39495dc18ff8ef0a3bce25f2b3c30036220dc7cbe4b34b518306593a40ae245912839852eaa65d8576ffd314d9386fd9a52740380505d625ea61a1269fd8c55dcc751adc681c5772127ac1806d6a9d1a8a25babfc16696aef5d51677d9c77abea96513236d7f41aa1793214bb592ca11a9689c53ec5a07370c6ae9bee76eeeb5e13301de4c6b6fd30c9fd0a1da3a889b3c9c1994572b6ea2d808a83a361471be53e75f335fecea69738d74419b62bb5a7ae98eb6626cc1ed64f6d74f642f1d027d1ae0af69bf9a04cac7dc6a762b80509462929a61749f4a6f6646ebecffe9e6ec06c8864ec79144008cba9a411367118b47e0f6a1c9c82fbf6249168b30acb3020ede3d013e1881da5b7fb3e30475676c05f37263a5d219641011d0d1a84ca3521d9d7490c587dfd98d5e68c5c5d2ec1f2b350e087059094e0926b1d36d0a96b647107f348008e8db3500ca42afee2e1a2e474f42b09e7a9f656d172ce2cbc6dfee0d67dc5857ecdfbcd8a65a7d1ad1382c7292df7007663301672622f7dac7020022aa1191b1a62f947fba6f3fa812c72a55979dbfddd1df67c775b7fd17bad929656e7a0fe3063b0431af887785f7411868b67cd929088393ceb05fdba90a2f73e97eea69661fc3e85dc3f83d45b2d4446ee1d75a99e329ced98175dc70f61c064410dab319860410d2715bd751999e5580cfeb6d72737e4ebfc3e612826e94e7a79447a41e818760f72acc31326ee7b3995a6e060fc7ff5d76e7901bdfc541b0f58d4396807e98c4ea4b1c0168f8d6f56660febc3d5762a82f40822f5bacc291e9fa0b8adbad3c8e7963936401758a9f597673a4d86c4e26e46283abe9503c9afac0b1f883d05e4f5ede6621fff9b5d95d6ec28545f14290efe07380d8623bda32123ffe22ed13a33477279c2f79ab8d604eb1663e55d170b59847fc72143b128444a28e2510634974b9fa50b392c640270cf4e1225d6af6be6b319040e9f31a61b7da49674eba8530e6d1098a8ba487e40880bce4a55abe0aa7a0044d828ebf473c58dd04346efcdb633751c3e7a4c3fca3b7175e08b4274ebf543722cd55a8aa1939831e02ec961a1d40390cc7300ab4dea246322e3b1118e478e5216cef94cdf8074091bf224722613dfe33357e561bab94d50d7a2ce8904647a97db27132ad8a0ec31cab4707d27023771cbffa95261734f65cb7d1e03c527351946720f9d83865f93e836e7565439d105e82158d4435610cfa691911ee012b83adc79caa0877b94710a7bd8bc430bb257ec3259d941ffb2dfc9c869c8b558c4f48a79740d6068496dbd2db46574aec71c315d4ef9e74bc361b1dd350656f471c58989733961a8d5d6f98f17d738c1e65767d1d8f502f91591560d6148f85244840433d3e7a0338eb9ed3eb1bab67e05005016f16134c5793aecd4d54ad430bb48bd8af5fbe31bfda0783f2cbf410af0f61b4fd8be10cb6562d76284e53ae82cf2f72c87002e65ca443c79c5b33c06e0503e3e156563cf41cc1d29bcf67cc74b7ce75b991b4f5220d1ede448d4d2f37867e315379cf0af50a624a26a78c166147c9ae3316135f940d1aa4a0b48cab9422c106e124a2d0e43182fc7eb4eaad95b366f80a7d76bfb6ad07a0501f7845b86959ecf38bcba1f208202ef7b1c58d34db98e8cf0f0d3ca7f6546a4670539b9ce5bee5da63b3</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Voyager
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://acvoyager.github.io/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Automating/" title="AWS学习笔记-Automating">https://acvoyager.github.io/2020/11/12/AWS学习笔记-Automating/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/AWS/" rel="tag"># AWS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/11/04/Learning-Roadmap/" rel="prev" title="Learning Roadmap">
+                  <i class="fa fa-chevron-left"></i> Learning Roadmap
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/11/12/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Decoupling/" rel="next" title="AWS学习笔记-Decoupling">
+                  AWS学习笔记-Decoupling <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  <script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Voyager</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/firebase@8.4.2/firebase-app.js" integrity="sha256-aS+rZ1asHNtiV5W1+xXQ5lgWF8vMvIqUGYkHJetOD9A=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/firebase@8.4.2/firebase-firestore.js" integrity="sha256-hCnXfO8mXFtVSaEv9mZUk6Dw2xIcWZj+ABYvThpJCJg=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="firestore" type="application/json">{&quot;enable&quot;:true,&quot;collection&quot;:&quot;articles&quot;,&quot;apiKey&quot;:&quot;AIzaSyDY9_gdwlZQh3pD0aOUUt4qoOuS_Cnn7L8&quot;,&quot;projectId&quot;:&quot;my-blog-9d335&quot;}</script>
+  <script src="/js/third-party/statistics/firestore.js"></script>
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;mhchem&quot;:false,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{&quot;enable&quot;:true,&quot;shortname&quot;:&quot;voyager&quot;,&quot;count&quot;:true,&quot;i18n&quot;:{&quot;disqus&quot;:&quot;disqus&quot;}}</script>
+<script src="/js/third-party/comments/disqus.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
