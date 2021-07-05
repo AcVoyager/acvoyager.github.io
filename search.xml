@@ -2477,6 +2477,9 @@ Java中线程池的核心实现类是`ThreadPoolExecutor`，顶层接口是`Exec
       <categories>
         <category>中文, English</category>
       </categories>
+      <tags>
+        <tag>network</tag>
+      </tags>
   </entry>
   <entry>
     <title>计网学习笔记</title>
@@ -2523,5 +2526,25 @@ Java中线程池的核心实现类是`ThreadPoolExecutor`，顶层接口是`Exec
       <categories>
         <category>中文, English</category>
       </categories>
+      <tags>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>入职学习笔记</title>
+    <url>/2021/07/05/%E5%85%A5%E8%81%8C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>结束了12年学生生涯，终于现在进入到工作岗位上了。本篇文章记录入职初期学习的一些笔记。</p>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>中文, English</category>
+      </categories>
+      <tags>
+        <tag>Distributed System</tag>
+        <tag>network</tag>
+        <tag>cloud</tag>
+        <tag>kubernetes</tag>
+      </tags>
   </entry>
 </search>
