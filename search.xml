@@ -2472,6 +2472,53 @@ Java中线程池的核心实现类是`ThreadPoolExecutor`，顶层接口是`Exec
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh -i &lt;private_key&gt; &lt;user&gt;@&lt;hostname&gt;</span><br></pre></td></tr></table></figure>
 <p>解析之后，server用MD5计算出发来的数字的hash value，然后用阶段一的shared secret发还给server。server用shared secret解析出MD5值，并自行用MD5计算发送的数字的hash value。如果对上了，说明client是private key的持有者，那么该用户被验证成功。</p>
 <p>因此，一般我们买了台VPS后，要不通过VPS服务商提供的系统上传一个key pair的公钥，要不就是先用password登陆，然后自行添加公钥。Vultr就属于前者，当然后续添加也没问题。</p>
+<p>TBC…</p>
+]]></content>
+      <categories>
+        <category>中文, English</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>计网学习笔记</title>
+    <url>/2021/07/05/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>其实计网的一些内容是六月份开始看的，只不过现在决定搬到博客上了2333. </p>
+<p>长期更新</p>
+<a id="more"></a>
+
+<h2 id="Application-Layer"><a href="#Application-Layer" class="headerlink" title="Application Layer"></a>Application Layer</h2><h3 id="Connections"><a href="#Connections" class="headerlink" title="Connections"></a>Connections</h3><p>HTTP 1.1 supports <strong>persistent connections</strong></p>
+<p>通俗点说，就是建立一次TCP连接之后，可以发送/接收多个HTTP Req/Res。也叫做connection reuse。为什么说“多个”呢，是因为现在的网页，每个网页都有很多资源，通常要不止一个HTTP Req才能加载完所有的资源。</p>
+<p>这样比起建立一次TCP连接只发送一个HTTP Req的好处是，后者（parallel connection）会造成Connections之间的竞争，以至于造成丢包等问题。每个TCP连接独立地进行拥塞控制，所以多个连接之间会争抢资源。原文如下：</p>
+<blockquote>
+<p>The reason is that TCP performs congestion control for each connection independently. As a consequence, the connections compete against each other, causing added packet loss, and in aggregate are more aggressive users of the network than an individual connection.</p>
+</blockquote>
+<p>实际上，persistent connection一般有一定的时间限制，比如说空闲60s后，就会关闭。</p>
+<p>一种叫做Pipelined Requests的模型，就是在收到上个Req的Res之前，就可以发送下一个Req。这种模型降低了服务器空闲的时间:</p>
+<blockquote>
+<p>… are sent in rapid succession as soon as enough of the main page has been retrieved to identify that the images must be fetched. The responses for these requests follow eventually. This method cuts down the time that the server is idle, so it further improves performance.</p>
+</blockquote>
+<h3 id="Message-Headers"><a href="#Message-Headers" class="headerlink" title="Message Headers"></a>Message Headers</h3><p>Location Header（Response）:</p>
+<blockquote>
+<p>The Location header is used by the server to inform the client that it should try a different URL. This can be used if the page has moved or to allow multiple URLs to refer to the same page (possibly on different servers). It is also used for companies that have a main Web page in the com domain but redirect clients to a national or regional page based on their IP addresses or preferred language.</p>
+</blockquote>
+<p>Apple，Microsoft等大公司的网站，似乎都用到了上述的内容。</p>
+<p>user-agent表明这个request的发送者浏览器类型，在判别使用设备的时候很好用。</p>
+<h3 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h3><p>Caching的核心问题就是解决如何搞清楚存储到浏览器的网页和实际上当前的网页是不是一样。</p>
+<p>这个问题可以通过两步解决。上图：</p>
+<p><img src="assets/imgs/1.png" alt=""></p>
+<p>首先本地浏览器看一下有没有过期（Expires）。没过期的话直接返回。过期的话就consult一下服务器，如果服务器说自从你上次更新（last modified）的事件后没有改变，那么就返回not modified，否则返回最新的并且更新last modified，Expires等字段。</p>
+<p>下一个重点，与CDN有关，Proxy Caching</p>
+<h3 id="Streaming"><a href="#Streaming" class="headerlink" title="Streaming"></a>Streaming</h3><p>Streaming用到另一个协议：RTP(Real-Time Transport Protocol)</p>
+<ul>
+<li>RTP一般包装在UDP中</li>
+<li>各式多媒体内容（音频，视频，文字等）多路复用（multiplex）入一个RTP payload</li>
+<li><img src="assets/imgs/2.png" alt=""></li>
+<li>it is a transport protocol that just happens to be implemented in the application layer</li>
+<li>Buffering and Jitter<ul>
+<li>Live applications do not work well on hold. In a streaming me- dia application, the player might pause. </li>
+</ul>
+</li>
+</ul>
+<p>TBC…</p>
 ]]></content>
       <categories>
         <category>中文, English</category>
